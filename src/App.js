@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useContext } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { Context } from './Commpont/Context/Contex';
+import Route from './Commpont/Route/Route';
 
 function App() {
+  const {setTheme,theme}=useContext(Context)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h2>Hellop</h2>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  style={{backgroundColor: theme ? "#fff" : '#000'}}>
+
+      <RouterProvider router={Route} >
+      
+      </RouterProvider>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.add-card {
+    background: #cfe5ff;
+    padding: 120px;
+}
+
+input.inputTask {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+textarea.inputText {
+    width: 100%;
+    margin: 5px 0;
+}

@@ -1,0 +1,94 @@
+.single-card {
+    padding: 10px;
+    background: #ececec;
+    border-radius: 7px;
+    position: relative;
+}
+
+.single-card h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 11px 0;
+}
+
+
+.bt-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bt-area button {
+    background: rgb(228, 84, 71);
+    color: #fff;
+    padding: 7px 20px;
+    margin: 15px 0;
+    font-size: 17px;
+    border-radius: 26px 0;
+}
+
+/* complect task */
+
+.single-card {
+    padding: 10px;
+    background: #ececec;
+    border-radius: 7px;
+}
+
+.single-card h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 11px 0;
+}
+
+.single-card {
+    position: relative;
+}
+
+.bt-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bt-area button {
+    background: rgb(228, 84, 71);
+    color: #fff;
+    padding: 7px 20px;
+    margin: 15px 0;
+    font-size: 17px;
+    border-radius: 26px 0;
+}
+
+.comment-area {
+    background: antiquewhite;
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    padding: 11px;
+    left: 0;
+}
+
+.show-comment {
+    display: flex;
+    margin: 13px 0;
+}
+
+.show-comment img {
+    width: 57px;
+    margin-right: 12px;
+    border-radius: 50%;
+    height: 57px;
+}
+
+input.comment {
+    width: 100%;
+    padding: 11px;
+}
+
+button.bt-comment {
+    background: #d15b00;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    padding: 11px 24px;
+    margin: 11px auto;
+}

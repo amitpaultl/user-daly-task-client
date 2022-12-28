@@ -1,0 +1,181 @@
+
+/* header css start */
+
+.header-first{
+    position: relative;
+}
+
+.header {
+   
+    z-index: 9;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: .3s;
+    background-color: #fff;
+    margin-bottom: 100px;
+    box-shadow: 0px 5px 2px rgba(0, 0, 0, .1);
+
+}
+
+.header.header-fixed {
+    padding: 1.2rem 0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #fff;
+}
+
+.header-contect {
+    height: 6.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #000;
+    font-size: 2.6rem;
+    margin: 0;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.menu-icon {
+    width: 3.2rem;
+    height: 2.5rem;
+    position: relative;
+    cursor: pointer;
+    display: none;
+}
+
+
+.menu-icon span {
+    display: block;
+    width: 100%;
+    height: .4rem;
+    background: #101010;
+    border-radius: .3rem;
+    position: absolute;
+    transition: all .3s;
+}
+
+.menu-icon span:first-child {
+    top: 0;
+}
+
+.menu-icon span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-icon span:last-child {
+    bottom: 0;
+}
+
+.menu-icon.menu-icon-design span:first-child {
+    top: 1rem;
+    transform: rotate(-45deg);
+}
+
+.menu-icon.menu-icon-design span:nth-child(2) {
+    background: transparent;
+}
+
+.menu-icon.menu-icon-design span:last-child {
+    top: 1rem;
+    transform: rotate(45deg);
+}
+
+.main-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu ul li {
+    list-style: none;
+    display: inline-block;
+    margin: .5rem;
+}
+
+
+.main-menu ul li a {
+    display: inline-block;
+    padding: 3px 16px;
+    font-size: 17px;
+    color: #000;
+    position: relative;
+}
+
+
+.main-menu ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgb(228, 84, 71);
+    content: ''; 
+    visibility: hidden;
+    transition: all 0.3s ease 0s;
+}
+
+.main-menu ul li a:hover:after {
+    visibility: visible;
+    width: 100%;
+    height: 1px;
+}
+.main-menu ul li a.active:after {
+    visibility: visible;
+    width: 100%;
+    height: 1px;
+}
+/* header css end */
+
+@media (max-width: 767px) {
+    .menu-icon {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-menu ul li {
+        display: block;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .main-menu ul li a {
+        padding: .8rem 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-menu ul li a {
+        color: #fff;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-menu {
+        text-align: center;
+        padding: 1rem 0;
+        position: absolute;
+        top: 100%;
+        background: #000;
+        left: 0;
+        right: 0;
+        border-top: 1px solid #fff;
+        display: none;
+    }
+
+    .main-menu.main-menu-open {
+        display: block;
+    }
+}

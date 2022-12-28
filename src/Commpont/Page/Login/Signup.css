@@ -1,0 +1,67 @@
+.input-box {padding: 100px 70px;text-align: center;}
+
+.input-text {border-radius: 100% 0 0 100%;background-image: linear-gradient(to bottom, #ff0000, #ff8100);padding: 35% 80px;}
+
+.input-text h2 {
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    display: inline-block;
+    overflow: hidden;
+}
+
+
+
+
+.input-text p {
+    color: #f1f0f0;
+    font-size: 16px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.social div {
+    font-size: 40px;
+    margin: 0 11px;
+}
+
+
+
+.input-box h2 {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.input-box p {
+    font-size: 21px;
+    margin: 10px 0;
+}
+
+.input-box p a{
+    color: #ff0000;
+
+}
+
+input.inputFile {
+    margin: 11px 0;
+    font-size: 18px;
+    background: aliceblue;
+    padding: 12px;
+}
+
+button.bt-submit {
+    width: 100%;
+    margin: 17px 0;
+    background-image: linear-gradient(to bottom, #ff8100, #ff0000);
+    padding: 15px 0;
+    font-size: 20px;
+    color: #fff;
+}
