@@ -7,6 +7,7 @@ import Forget from '../Page/Login/Forget';
 import Login from '../Page/Login/Login';
 import Signup from '../Page/Login/Signup';
 import MyTask from '../Page/MyTask/MyTask';
+import UpdateTask from '../Page/UpdateTask/UpdateTask';
 import Root from '../Root/Root';
 
 const Route = createBrowserRouter([
@@ -37,10 +38,15 @@ const Route = createBrowserRouter([
             {
                 path:'/myTask',
                 element:<MyTask></MyTask>
+            
             },
             {
                 path:'/completedTask',
                 element:<CompletedTask></CompletedTask>
+            },
+            {
+                path:'/updateData/:id',
+                element:<UpdateTask></UpdateTask>
             },
         ]
     }

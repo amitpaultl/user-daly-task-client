@@ -22,37 +22,37 @@ const AuthContext = ({children}) => {
     
         // email sing up
         const emailsingup = (email,password)=>{
-            setLoader(true)
+            // setLoader(true)
             return createUserWithEmailAndPassword(auth, email, password)
         }
         // email login
         const singinemail = (email,password)=>{
-            setLoader(true)
+            // setLoader(true)
             return signInWithEmailAndPassword(auth, email, password)
         }
     
         // google sing up
         const googleSingup =()=>{
-            setLoader(true)
+            // setLoader(true)
             return signInWithPopup(auth, googleprovider)
         }
     
         // google login
     
         const googlelogin =()=>{
-            setLoader(true)
+            // setLoader(true)
             return signInWithRedirect(auth, googleprovider);
         }
     
         // githum sing up
         const gitgubSingUp =()=>{
-            setLoader(true)
+            // setLoader(true)
             return signInWithPopup(auth, githubprovider)
         }
     
         // githum login
         const githubLogin =()=>{
-            setLoader(true)
+            // setLoader(true)
             return signInWithRedirect(auth, githubprovider);
         }
     

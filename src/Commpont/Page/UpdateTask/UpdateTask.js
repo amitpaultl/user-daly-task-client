@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
-import './AddTask.css'
+import { json, useParams } from 'react-router-dom';
+import '../AddTask/AddTask.css'
 
-const AddTask = () => {
+const UpdateTask = () => {
+    const { id } = useParams()
+    const [content , setContent] = useState()
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/getTask/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.data);
+            setContent(data.data)
+        })
+    },[])
+    
+
     const formSubmit = (e) => {
         e.preventDefault()
         const name = e.target.name.value;
@@ -26,8 +40,8 @@ const AddTask = () => {
 
                     }
                     // post data
-                    fetch(`http://localhost:5000/userTask`, {
-                        method: 'POST',
+                    fetch(`http://localhost:5000/updateTask/${id}`, {
+                        method: 'PUT',
                         headers: {
 
                             'content-type': 'application/json',
@@ -51,10 +65,10 @@ const AddTask = () => {
                 <div className="add-card">
                     <form onSubmit={formSubmit}>
 
-                        <input type="text" className='inputTask' name='name' placeholder='Task Name' />
-                        <textarea name={'message'} className='inputText' id="" cols="30" rows="10"></textarea>
+                        <input type="text" defaultValue={content.name} className='inputTask' name='name' placeholder='Task Name' />
+                        <textarea defaultValue={content.message} name={'message'} className='inputText' id="" cols="30" rows="10"></textarea>
                         <input type="file" name={'img'} />
-                        <button type="submit" className='bt-submit'>Submit</button>
+                        <button type="submit" className='bt-submit'>Update Data</button>
                     </form>
                 </div>
             </div>
@@ -64,4 +78,4 @@ const AddTask = () => {
     );
 };
 
-export default AddTask;
+export default UpdateTask;

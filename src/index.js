@@ -4,13 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Contex from './Commpont/Context/Contex';
+import AuthContext from './Commpont/Context/AuthContext';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Contex>
-      <App />
-    </Contex>
+    <QueryClientProvider client={queryClient}>
+      <AuthContext>
+        <Contex>
+          <App />
+        </Contex>
+      </AuthContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
