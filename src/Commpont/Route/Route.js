@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AddTask from '../Page/AddTask/AddTask';
+import Comment from '../Page/Comment/Comment';
 import CompletedTask from '../Page/CompletedTask/CompletedTask';
 import Home from '../Page/Home/Home';
 import Forget from '../Page/Login/Forget';
@@ -47,6 +48,10 @@ const Route = createBrowserRouter([
             {
                 path:'/updateData/:id',
                 element:<UpdateTask></UpdateTask>
+            },
+            {
+                path:'/comment/:id',
+                element:<Comment></Comment>
             },
         ]
     }

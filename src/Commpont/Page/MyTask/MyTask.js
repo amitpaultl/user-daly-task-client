@@ -71,8 +71,9 @@ const MyTask = () => {
     return (
         <div>
             <div className="container mx-auto">
+                
                 <div className="card gap-5  grid  md:grid-cols-3 sm:grid-cols-1">
-                    {
+                    { completedNot.length === 0 ? <p className='text-center'>No Data</p> :
                         completedNot.map(task =>
                             <div key={task._id} className="single-card">
                                 <img src={task.image} alt="" />

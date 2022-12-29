@@ -1,21 +1,43 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
-import { json, useParams } from 'react-router-dom';
+import { json, useNavigate, useParams } from 'react-router-dom';
 import '../AddTask/AddTask.css'
+import Loading from '../Loding/Loding';
 
 const UpdateTask = () => {
     const { id } = useParams()
-    const [content , setContent] = useState()
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-        fetch(`http://localhost:5000/getTask/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data.data);
-            setContent(data.data)
-        })
-    },[])
+    // const [content , setContent] = useState()
+
+    // useEffect(()=>{
+    //     fetch(`http://localhost:5000/getTask/${id}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data.data);
+    //         setContent(data.data)
+    //     })
+    // },[])
+
+    const url = `http://localhost:5000/getTask/${id}`;
+    const { data: addProduct = [], refetch, isLoading } = useQuery({
+        queryKey: ['addProduct'],
+        queryFn: async () => {
+            const res = await fetch(url, {
+                headers: {
+                    // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+
+            });
+            const data = await res.json();
+            return data
+        }
+    })
     
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const formSubmit = (e) => {
         e.preventDefault()
@@ -40,7 +62,7 @@ const UpdateTask = () => {
 
                     }
                     // post data
-                    fetch(`http://localhost:5000/updateTask/${id}`, {
+                    fetch(`http://localhost:5000/updateTaskOld/${id}`, {
                         method: 'PUT',
                         headers: {
 
@@ -51,6 +73,7 @@ const UpdateTask = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            navigate('/myTask')
                             toast.success('Add your task')
                             // setLoad(false)
 
@@ -65,8 +88,8 @@ const UpdateTask = () => {
                 <div className="add-card">
                     <form onSubmit={formSubmit}>
 
-                        <input type="text" defaultValue={content.name} className='inputTask' name='name' placeholder='Task Name' />
-                        <textarea defaultValue={content.message} name={'message'} className='inputText' id="" cols="30" rows="10"></textarea>
+                        <input type="text" defaultValue={addProduct.data.name} className='inputTask' name='name' placeholder='Task Name' />
+                        <textarea defaultValue={addProduct.data.message} name={'message'} className='inputText' id="" cols="30" rows="10"></textarea>
                         <input type="file" name={'img'} />
                         <button type="submit" className='bt-submit'>Update Data</button>
                     </form>
