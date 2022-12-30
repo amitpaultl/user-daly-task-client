@@ -26,7 +26,7 @@ const AddTask = () => {
 
                     }
                     // post data
-                    fetch(`http://localhost:5000/userTask`, {
+                    fetch(`https://user-daly-task-server.vercel.app/userTask`, {
                         method: 'POST',
                         headers: {
 

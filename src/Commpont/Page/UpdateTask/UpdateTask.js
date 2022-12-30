@@ -9,18 +9,7 @@ const UpdateTask = () => {
     const { id } = useParams()
     const navigate = useNavigate();
 
-    // const [content , setContent] = useState()
-
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/getTask/${id}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data.data);
-    //         setContent(data.data)
-    //     })
-    // },[])
-
-    const url = `http://localhost:5000/getTask/${id}`;
+    const url = `https://user-daly-task-server.vercel.app/getTask/${id}`;
     const { data: addProduct = [], refetch, isLoading } = useQuery({
         queryKey: ['addProduct'],
         queryFn: async () => {
@@ -34,7 +23,7 @@ const UpdateTask = () => {
             return data
         }
     })
-    
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -43,44 +32,32 @@ const UpdateTask = () => {
         e.preventDefault()
         const name = e.target.name.value;
         const message = e.target.message.value;
-        const image = e.target.img.files[0]
-        const formData = new FormData();
-        formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=9b886ea0069808da69e30cf31f29ca72`;
-        fetch(url, {
-            method: 'POST',
-            body: formData
+
+        const information = {
+            name,
+            message,
+
+        }
+
+        // post data
+        fetch(`https://user-daly-task-server.vercel.app/updateTaskOld/${id}`, {
+            method: 'PUT',
+            headers: {
+
+                'content-type': 'application/json',
+                // authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(information)
         })
             .then(res => res.json())
             .then(data => {
-                if (data.success) {
-                    const information = {
-                        name,
-                        message,
-                        image: data.data.display_url,
-                        publish:false
+                navigate('/')
+                toast.success('Add your task')
+                // setLoad(false)
+                refetch()
 
-                    }
-                    // post data
-                    fetch(`http://localhost:5000/updateTaskOld/${id}`, {
-                        method: 'PUT',
-                        headers: {
-
-                            'content-type': 'application/json',
-                            // authorization: `bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(information)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            navigate('/myTask')
-                            toast.success('Add your task')
-                            // setLoad(false)
-
-                        })
-
-                }
             })
+        
     }
     return (
         <div>
@@ -90,7 +67,7 @@ const UpdateTask = () => {
 
                         <input type="text" defaultValue={addProduct.data.name} className='inputTask' name='name' placeholder='Task Name' />
                         <textarea defaultValue={addProduct.data.message} name={'message'} className='inputText' id="" cols="30" rows="10"></textarea>
-                        <input type="file" name={'img'} />
+                        {/* <input type="file" name={'img'} /> */}
                         <button type="submit" className='bt-submit'>Update Data</button>
                     </form>
                 </div>

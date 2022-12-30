@@ -6,7 +6,7 @@ import Loading from '../Loding/Loding';
 import './MyTask.css'
 const MyTask = () => {
 
-    const url = `http://localhost:5000/getTask`;
+    const url = `https://user-daly-task-server.vercel.app/getTask`;
     const { data: addProduct = [], refetch, isLoading } = useQuery({
         queryKey: ['addProduct'],
         queryFn: async () => {
@@ -23,13 +23,11 @@ const MyTask = () => {
 
     // filter
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+  
 
     // update
     const completed = (id) => {
-        fetch(`http://localhost:5000/updateTask/${id}`, {
+        fetch(`https://user-daly-task-server.vercel.app/updateTask/${id}`, {
             method: 'PUT',
             headers: {
                 // authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -46,7 +44,7 @@ const MyTask = () => {
     // delete data 
     const deleteData = (id) => {
 
-        fetch(`http://localhost:5000/deleteTask/${id}`, {
+        fetch(`https://user-daly-task-server.vercel.app/deleteTask/${id}`, {
             method: 'DELETE',
             headers: {
                 // authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -61,17 +59,19 @@ const MyTask = () => {
     }
 
 
-   
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
   
     const completedNot = addProduct.data.filter(complet => complet.publish === false)
 
-    console.log(completedNot);
+    
 
     return (
         <div>
             <div className="container mx-auto">
-                
+
                 <div className="card gap-5  grid  md:grid-cols-3 sm:grid-cols-1">
                     { completedNot.length === 0 ? <p className='text-center'>No Data</p> :
                         completedNot.map(task =>
