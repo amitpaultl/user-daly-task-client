@@ -1,9 +1,13 @@
 import React from 'react';
+import Counter from '../../Redux/Counter/Counter';
 
 const Home = () => {
     return (
         <div>
-            <h1>home</h1>
+            
+            <div className='container mx-auto'>
+                <Counter></Counter>
+            </div>
         </div>
     );
 };

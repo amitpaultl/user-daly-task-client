@@ -12,18 +12,22 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { Provider } from 'react-redux';
+import store from './Commpont/Redux/Store/Store';
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthContext>
-        <Contex>
-          <App />
-        </Contex>
-      </AuthContext>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AuthContext>
+          <Contex>
+            <App />
+          </Contex>
+        </AuthContext>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
 
